@@ -72,6 +72,7 @@ use-yat:
 	@cp _themes/yat/page.html _layouts/page.html
 	@cp _themes/yat/post.html _layouts/post.html
 
+
 # Serve with selected theme
 serve-minima: use-minima clean
 	@make serve-current
