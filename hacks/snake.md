@@ -70,7 +70,7 @@ permalink: /snake
 
 <h2>Snake</h2>
 <div class="container">
-    <p class="fs-4">Score: <span id="score_value">0</span></p>
+    <p class="fs-4">Apples: <span id="score_value">0</span></p>
     <div class="container bg-secondary" style="text-align:center;">
         <!-- Main Menu -->
         <div id="menu" class="py-4 text-light">
@@ -266,8 +266,19 @@ permalink: /snake
             }
             // Repaint canvas
             ctx.beginPath();
-            ctx.fillStyle = "royalblue";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            const checkerSize = BLOCK*2;
+            for (let y = 0; y < canvas.height; y += checkerSize) {
+                for (let x = 0; x < canvas.width; x += checkerSize) {
+                    // Alternate colors
+                    if (((x / checkerSize) + (y / checkerSize)) % 2 === 0) {
+                        ctx.fillStyle = "#7FFF00"; // light color
+                    } else {
+                        ctx.fillStyle = "#62c400ff"; // dark color
+                    }
+                    ctx.fillRect(x, y, checkerSize, checkerSize);
+                }
+            }
+
             // Paint snake
             for(let i = 0; i < snake.length; i++){
                 activeDot(snake[i].x, snake[i].y);
