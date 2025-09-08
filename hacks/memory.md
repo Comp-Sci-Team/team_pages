@@ -21,6 +21,7 @@ permalink: /javascript/project/memory
 <h2>Memory Game</h2>
 <p>Score: <span class="score"></span></p>
 <p>Attempts: <span class="attempts"></span></p>
+<p>Least Amount of Attempts: <span class="highscore"></span></p>
 <div class="container">
     <canvas class="memoryCanvas" id="memoryCanvas" width="600" height="400"></canvas>
 </div>
@@ -36,10 +37,13 @@ permalink: /javascript/project/memory
     let matchedCells = []; // Stores matched cells [{col, row}]
     const scoreDisplay = document.querySelector('.score');
     const attemptsDisplay = document.querySelector('.attempts');
+    const highscoreDisplay = document.querySelector('.highscore');
     let score = 0; // Player's score
     let attempts = 0; // Number of attempts made
+    let highscore = 0; // Fix later
     scoreDisplay.textContent = score;
     attemptsDisplay.textContent = attempts;
+    highscoreDisplay.textContent = highscore;
 
     // Draws the grid lines on the canvas
     function drawGrid(cols, rows) {
@@ -176,6 +180,8 @@ permalink: /javascript/project/memory
         if (revealedCells.length === 2) {
             attempts += 1;
             attemptsDisplay.textContent = attempts;
+            highscore += 1;
+            highscoreDisplay.textContent = highscore;
             if (revealedCells[0].emoji === revealedCells[1].emoji) {
                 // Matched, keep revealed and update score
                 score += 1;
@@ -192,7 +198,11 @@ permalink: /javascript/project/memory
                 }, 800);
             }
         }
-        if(score == 8) {
+        if(score == 8 && attempts == 8) {
+            alert("Wow! You got it first try!");
+            // refresh page
+            location.reload();
+        } else if (score == 8) {
             alert("Congratulations! You've matched all pairs!");
             // refresh page
             location.reload();

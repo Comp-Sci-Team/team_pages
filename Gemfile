@@ -1,10 +1,7 @@
 source "https://rubygems.org"
 
-gem "jekyll", "~> 4.3"
-gem "jekyll-feed", "~> 0.15"
-gem "jekyll-seo-tag", "~> 2.7"
-gem "jekyll-sitemap", "~> 1.4"
-gem "jekyll-paginate", "~> 1.1"
-gem "jekyll-spaceship"
-gem "jekyll-remote-theme"
-gem "kramdown-parser-gfm"
+gem "github-pages", group: :jekyll_plugins
+
+gem "webrick", "~> 1.7"
+
+gem "execjs", "~> 2.8"
