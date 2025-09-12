@@ -281,7 +281,13 @@ permalink: /snake
 
             // Paint snake
             for(let i = 0; i < snake.length; i++){
-                activeDot(snake[i].x, snake[i].y, "#1100ffff");
+				if (i != 0)
+				{
+					activeDot(snake[i].x, snake[i].y, "#1100ffff");
+					continue;
+				}
+
+				activeDot(snake[i].x, snake[i].y, "#ffff");
             }
             // Paint food
             activeDot(food.x, food.y, "#f02a2aff");
@@ -316,19 +322,19 @@ permalink: /snake
         let changeDir = function(key){
             // test key and switch direction
             switch(key) {
-                case 37:    // left arrow
+                case 65:    // A key
                     if (snake_dir !== 1)    // not right
                         snake_next_dir = 3; // then switch left
                     break;
-                case 38:    // up arrow
+                case 87:    // W key
                     if (snake_dir !== 2)    // not down
                         snake_next_dir = 0; // then switch up
                     break;
-                case 39:    // right arrow
+                case 68:    // D key
                     if (snake_dir !== 3)    // not left
                         snake_next_dir = 1; // then switch right
                     break;
-                case 40:    // down arrow
+                case 83:    // S key
                     if (snake_dir !== 0)    // not up
                         snake_next_dir = 2; // then switch down
                     break;

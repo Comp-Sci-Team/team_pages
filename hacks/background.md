@@ -10,30 +10,30 @@ permalink: /background
 <canvas id="world"></canvas>
 
 <script>
+ // creating elements used in the scene
   const canvas = document.getElementById("world");
   const ctx = canvas.getContext('2d');
-
   const backgroundImg = new Image();
-  backgroundImg.src = '{{page.background}}';
-
   const spriteImg = new Image();
-  spriteImg.src = '{{page.sprite}}';
+  backgroundImg.src = 'images/platformer/backgrounds/tranquil_field.jpg';
+  spriteImg.src = 'images/platformer/sprites/flying-ufo.png';
 
+// load images
+  let imagesLoaded = 0;
   backgroundImg.onload = function() {
-    const canvasWidth = window.innerWidth;
-    const canvasHeight = window.innerHeight;
+    imagesLoaded++;
+    startGameWorld();
+  };
+  spriteImg.onload = function() {
+    imagesLoaded++;
+    startGameWorld();
+  };
 
-    canvas.width = canvasWidth;
-    canvas.height = canvasHeight;
-    canvas.style.width = `${canvasWidth}px`;
-    canvas.style.height = `${canvasHeight}px`;
+// initializing the game world and creating all the objects
+  function startGameWorld() {
+    if (imagesLoaded < 2) return;
 
-    canvas.style.position = 'absolute';
-    canvas.style.left = `0px`;
-    canvas.style.top = `${(window.innerHeight - canvasHeight) / 2}px`;
-
-    var gameSpeed = 5;
-
+	// class for game objects, all other game objects derive from this
     class GameObject {
       constructor(image, width, height, x = 0, y = 0, speedRatio = 0) {
         this.image = image;
@@ -42,7 +42,7 @@ permalink: /background
         this.x = x;
         this.y = y;
         this.speedRatio = speedRatio;
-        this.speed = gameSpeed * this.speedRatio;
+        this.speed = GameWorld.gameSpeed * this.speedRatio;
       }
       update() {}
       draw(ctx) {
@@ -50,36 +50,95 @@ permalink: /background
       }
     }
 
+	// class for the background of the scene that inherits from the game object class
     class Background extends GameObject {
+      constructor(image, gameWorld) {
+        // Fill entire canvas
+        super(image, gameWorld.width, gameWorld.height, 0, 0, 0.1);
+      }
       update() {
         this.x = (this.x - this.speed) % this.width;
       }
       draw(ctx) {
-        // Draw two images for seamless scrolling
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
         ctx.drawImage(this.image, this.x + this.width, this.y, this.width, this.height);
       }
     }
 
-    // Create objects
-    const backgroundObj = new Background(backgroundImg, canvasWidth, canvasHeight, 0, 0, 0.1);
+	//input
+	player_dir = 0;
+	let changeDir = function(key){
+		// test key and switch direction
+		switch(key) {
+			case 65:    // A key
+					player_dir = -1; // then switch left
+				break;
+			case 68:    // D key
+					player_dir = 1; // then switch right
+				break;
+		}
+	}
 
-    // Center the sprite and scale it down
-    const spriteWidth = spriteImg.naturalWidth / 2;
-    const spriteHeight = spriteImg.naturalHeight / 2;
-    const spriteX = (canvasWidth - spriteWidth) / 2;
-    const spriteY = (canvasHeight - spriteHeight) / 2;
-    const spriteObj = new GameObject(spriteImg, spriteWidth, spriteHeight, spriteX, spriteY);
-
-    function animate() {
-      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-      backgroundObj.update();
-      backgroundObj.draw(ctx);
-      if (spriteImg.complete && spriteImg.naturalWidth > 0) {
-        spriteObj.draw(ctx);
+	// player class which is the ufo, inherits from game object class
+    class Player extends GameObject {
+      constructor(image, gameWorld) {
+        const width = image.naturalWidth / 2;
+        const height = image.naturalHeight / 2;
+        const x = (gameWorld.width - width) / 2;
+        const y = (gameWorld.height - height) / 2;
+        super(image, width, height, x, y);
+        this.baseY = y;
+		this.baseX = x;
+        this.frame = 0;
       }
-      requestAnimationFrame(animate);
+      update() {
+		canvas.onkeydown = function(evt) {
+			changeDir(evt.keyCode);
+        }
+
+		this.x = this.baseX + Math.tan(this.frame * 0.1) * 40;
+        this.y = this.baseY + Math.sin(this.frame * 0.05) * 20;
+        this.frame++;
+      }
     }
-    animate();
-  };
+
+
+	// class for the gameworld where the game is run and the background and player objects are created
+    class GameWorld {
+      static gameSpeed = 5;
+      constructor(backgroundImg, spriteImg) {
+        this.canvas = document.getElementById("world");
+        this.ctx = this.canvas.getContext('2d');
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
+        this.canvas.width = this.width;
+        this.canvas.height = this.height;
+        this.canvas.style.width = `${this.width}px`;
+        this.canvas.style.height = `${this.height}px`;
+        this.canvas.style.position = 'absolute';
+        this.canvas.style.left = `0px`;
+        this.canvas.style.top = `${(window.innerHeight - this.height) / 2}px`;
+
+        this.gameObjects = [
+         new Background(backgroundImg, this),
+         new Player(spriteImg, this)
+        ];
+      }
+      gameLoop() {
+        this.ctx.clearRect(0, 0, this.width, this.height);
+        for (const obj of this.gameObjects) {
+          obj.update();
+          obj.draw(this.ctx);
+        }
+
+        requestAnimationFrame(this.gameLoop.bind(this));
+      }
+      start() {
+        this.gameLoop();
+      }
+    }
+
+    const world = new GameWorld(backgroundImg, spriteImg);
+    world.start();
+  }
 </script>
