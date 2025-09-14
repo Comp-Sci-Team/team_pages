@@ -2,7 +2,7 @@
 layout: opencs
 title: Background with Object
 description: Use JavaScript to have an in motion background.
-sprite: /images/platformer/sprites/flying-ufo.png
+sprite: images/platformer/sprites/flying-ufo.png
 background: images/platformer/backgrounds/tranquil_field.jpg
 permalink: /background
 ---
@@ -15,8 +15,8 @@ permalink: /background
   const ctx = canvas.getContext('2d');
   const backgroundImg = new Image();
   const spriteImg = new Image();
-  backgroundImg.src = '{{page.background}}';
-  spriteImg.src = '{{page.sprite}}';
+  backgroundImg.src = 'images/platformer/sprites/flying-ufo.png';
+  spriteImg.src = 'images/platformer/backgrounds/tranquil_field.jpg';
 
 // load images
   let imagesLoaded = 0;
