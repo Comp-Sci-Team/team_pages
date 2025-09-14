@@ -10,13 +10,13 @@ permalink: /background
 <canvas id="world"></canvas>
 
 <script>
- // creating elements used in the scene
+// creating elements used in the scene
   const canvas = document.getElementById("world");
   const ctx = canvas.getContext('2d');
   const backgroundImg = new Image();
   const spriteImg = new Image();
-  backgroundImg.src = 'images/platformer/backgrounds/tranquil_field.jpg';
-  spriteImg.src = 'images/platformer/sprites/flying-ufo.png';
+  backgroundImg.src = '{{page.background}}';
+  spriteImg.src = '{{page.sprite}}';
 
 // load images
   let imagesLoaded = 0;
