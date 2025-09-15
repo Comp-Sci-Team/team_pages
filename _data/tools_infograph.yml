@@ -55,7 +55,7 @@ Topics:
       - "Commit changes "
     subtitle: "Code Editor"
     description: "Writing code starts in an editor. VS Code and its extensions streamline the software development process, enabling the Software Development Lifecycle (SDLC)."
-    title: "Sci-Fi Tools"
+  - title: "Sci-Fi Tools"
     image: "/tools/guidebook.png"
     link: "tools/scifi_tools"
     alt: "Sci-Fi Tools"
