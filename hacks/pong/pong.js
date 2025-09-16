@@ -171,8 +171,8 @@ function handleInput(deltaTime){
       else if(center > ballY + 10 + error) rightY -= paddleSpeed * 0.9 * deltaTime;
     }
   } else {
-    if(keys['ArrowUp']   && rightY > 0 && !rightFreeze) rightY -= paddleSpeed;
-    if(keys['ArrowDown'] && rightY < canvas.height - paddleHeight && !rightFreeze) rightY += paddleSpeed;
+    if(keys['ArrowUp']   && rightY > 0 && !rightFreeze) rightY -= paddleSpeed * deltaTime;
+    if(keys['ArrowDown'] && rightY < canvas.height - paddleHeight && !rightFreeze) rightY += paddleSpeed * deltaTime;
   }
 
   if(keys['d'])        { shootBullet(true);  keys['d'] = false; }
