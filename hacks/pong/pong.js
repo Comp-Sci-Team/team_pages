@@ -6,7 +6,8 @@ style.textContent = `
     background: #000;
     color: #fff;
     font-family: Arial, sans-serif;
-    overflow: hidden;
+    /* allow scrolling so users can reach the full game on small viewports */
+    overflow: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,6 +20,9 @@ style.textContent = `
   canvas {
     background: #111; display: block;
     border: 2px solid #fff; border-radius: 10px;
+    /* make the canvas shrink on small screens while keeping aspect ratio */
+    max-width: calc(100vw - 40px);
+    height: auto;
   }
   button {
     margin: 5px; font-size: 16px; padding: 5px 10px;
