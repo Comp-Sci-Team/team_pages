@@ -35,14 +35,6 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// const tutorial = document.createElement('div');
-// tutorial.innerHTML = `
-//   Controls: <br>
-//   W/S to move and D to shoot (Left Player) <br>
-//   Arrow Up/Down to move and Arrow Left to shoot (Right Player) <br>
-//   Bullets freeze enemy paddles for 5 seconds
-// `;
-
 const scoreboard = document.createElement('div');
 scoreboard.id = 'scoreboard';
 scoreboard.textContent = '0 : 0';
@@ -168,8 +160,8 @@ function shootBullet(isLeft){
 }
 
 function handleInput(deltaTime){
-  if(keys['w'] && leftY > 0 && !leftFreeze) leftY -= paddleSpeed * deltaTime;
-  if(keys['s'] && leftY < canvas.height - paddleHeight && !leftFreeze) leftY += paddleSpeed * deltaTime;
+  if(keys['w'] && leftY > 0 && !leftFreeze) leftY -= paddleSpeed * deltaTime * 0.1;
+  if(keys['s'] && leftY < canvas.height - paddleHeight && !leftFreeze) leftY += paddleSpeed * deltaTime * 0.1;
 
   if(modeAI){
     if(!rightFreeze){
@@ -188,8 +180,8 @@ function handleInput(deltaTime){
 }
 
 function update(deltaTime){
-  ballX += ballSpeedX * deltaTime; 
-   ballY += ballSpeedY * deltaTime;
+  ballX += ballSpeedX * deltaTime * 0.1; 
+   ballY += ballSpeedY * deltaTime * 0.1;
  
   if(ballY - ballRadius < 0 || ballY + ballRadius > canvas.height) ballSpeedY *= -1;
 
@@ -215,7 +207,7 @@ function update(deltaTime){
 
   for (let i = bullets.length - 1; i >= 0; i--) {
     const b = bullets[i];
-    b.x += b.vx * deltaTime;
+    b.x += b.vx * deltaTime * 0.1;
 
     if(b.from==='left'  && b.x + 5 >= canvas.width - 20 - paddleWidth && b.y > rightY && b.y < rightY + paddleHeight){
       rightFreeze = true; setTimeout(()=>{rightFreeze=false;}, freezeTime); bullets.splice(i,1);
