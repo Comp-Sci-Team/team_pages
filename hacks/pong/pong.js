@@ -35,6 +35,13 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+cooldowns.innerHTML = `
+  Controls: <br>
+  W/S to move and D to shoot (Left Player) <br>
+  Arrow Up/Down to move and Arrow Left to shoot (Right Player) <br>
+  Bullets freeze enemy paddles for 5 seconds on impact
+`;
+
 const scoreboard = document.createElement('div');
 scoreboard.id = 'scoreboard';
 scoreboard.textContent = '0 : 0';
@@ -253,6 +260,7 @@ var lastUpdate = Date.now();
 function gameLoop(){
 	var nowUpdate = Date.now();
 	var deltaTime = nowUpdate - lastUpdate;
+	lastUpdate = nowUpdate;
 
   if (!running) return; // stops loop when paused
   handleInput(deltaTime);
