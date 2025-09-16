@@ -160,15 +160,15 @@ function shootBullet(isLeft){
 }
 
 function handleInput(deltaTime){
-  if(keys['w'] && leftY > 0 && !leftFreeze) leftY -= paddleSpeed * deltaTime * 0.1;
-  if(keys['s'] && leftY < canvas.height - paddleHeight && !leftFreeze) leftY += paddleSpeed * deltaTime * 0.1;
+  if(keys['w'] && leftY > 0 && !leftFreeze) leftY -= paddleSpeed * deltaTime;
+  if(keys['s'] && leftY < canvas.height - paddleHeight && !leftFreeze) leftY += paddleSpeed * deltaTime;
 
   if(modeAI){
     if(!rightFreeze){
       const center = rightY + paddleHeight/2;
       const error = (Math.random() - 0.5) * 20;
-      if(center < ballY - 10 + error) rightY += paddleSpeed * 0.9;
-      else if(center > ballY + 10 + error) rightY -= paddleSpeed * 0.9;
+      if(center < ballY - 10 + error) rightY += paddleSpeed * 0.9 * deltaTime;
+      else if(center > ballY + 10 + error) rightY -= paddleSpeed * 0.9 * deltaTime;
     }
   } else {
     if(keys['ArrowUp']   && rightY > 0 && !rightFreeze) rightY -= paddleSpeed;
@@ -180,8 +180,8 @@ function handleInput(deltaTime){
 }
 
 function update(deltaTime){
-  ballX += ballSpeedX * deltaTime * 0.1; 
-   ballY += ballSpeedY * deltaTime * 0.1;
+  ballX += ballSpeedX * deltaTime; 
+   ballY += ballSpeedY * deltaTime;
  
   if(ballY - ballRadius < 0 || ballY + ballRadius > canvas.height) ballSpeedY *= -1;
 
@@ -207,7 +207,7 @@ function update(deltaTime){
 
   for (let i = bullets.length - 1; i >= 0; i--) {
     const b = bullets[i];
-    b.x += b.vx * deltaTime * 0.1;
+    b.x += b.vx * deltaTime;
 
     if(b.from==='left'  && b.x + 5 >= canvas.width - 20 - paddleWidth && b.y > rightY && b.y < rightY + paddleHeight){
       rightFreeze = true; setTimeout(()=>{rightFreeze=false;}, freezeTime); bullets.splice(i,1);
@@ -252,7 +252,7 @@ var lastUpdate = Date.now();
 
 function gameLoop(){
 	var nowUpdate = Date.now();
-	var deltaTime = nowUpdate - lastUpdate;
+	var deltaTime = (nowUpdate - lastUpdate) * 0.05;
 	lastUpdate = nowUpdate;
 
   if (!running) return; // stops loop when paused
