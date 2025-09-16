@@ -159,9 +159,9 @@ function shootBullet(isLeft){
   }
 }
 
-function handleInput(){
-  if(keys['w'] && leftY > 0 && !leftFreeze) leftY -= paddleSpeed;
-  if(keys['s'] && leftY < canvas.height - paddleHeight && !leftFreeze) leftY += paddleSpeed;
+function handleInput(deltaTime){
+  if(keys['w'] && leftY > 0 && !leftFreeze) leftY -= paddleSpeed * deltaTime;
+  if(keys['s'] && leftY < canvas.height - paddleHeight && !leftFreeze) leftY += paddleSpeed * deltaTime;
 
   if(modeAI){
     if(!rightFreeze){
@@ -179,8 +179,10 @@ function handleInput(){
   if(keys['ArrowLeft']){ shootBullet(false); keys['ArrowLeft'] = false; }
 }
 
-function update(){
-  ballX += ballSpeedX; ballY += ballSpeedY;
+function update(deltaTime){
+  ballX += ballSpeedX * deltaTime; 
+   ballY += ballSpeedY * deltaTime;
+ 
   if(ballY - ballRadius < 0 || ballY + ballRadius > canvas.height) ballSpeedY *= -1;
 
   if(ballX - ballRadius < 20 + paddleWidth && ballY > leftY && ballY < leftY + paddleHeight){
@@ -205,7 +207,7 @@ function update(){
 
   for (let i = bullets.length - 1; i >= 0; i--) {
     const b = bullets[i];
-    b.x += b.vx;
+    b.x += b.vx * deltaTime;
 
     if(b.from==='left'  && b.x + 5 >= canvas.width - 20 - paddleWidth && b.y > rightY && b.y < rightY + paddleHeight){
       rightFreeze = true; setTimeout(()=>{rightFreeze=false;}, freezeTime); bullets.splice(i,1);
@@ -245,10 +247,16 @@ function draw(){
   ctx.fillStyle = '#ff0';
   bullets.forEach(b => ctx.fillRect(b.x - 4, b.y - 4, 8, 8));
 }
+
+var lastUpdate = Date.now();
+
 function gameLoop(){
+	var nowUpdate = Date.now();
+	var deltaTime = nowUpdate - lastUpdate;
+
   if (!running) return; // stops loop when paused
-  handleInput();
-  update();
+  handleInput(deltaTime);
+  update(deltaTime);
   draw();
   requestAnimationFrame(gameLoop);
 }
