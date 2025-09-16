@@ -35,13 +35,13 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-const tutorial = document.createElement('div');
-tutorial.innerHTML = `
-  Controls: <br>
-  W/S to move and D to shoot (Left Player) <br>
-  Arrow Up/Down to move and Arrow Left to shoot (Right Player) <br>
-  Bullets freeze enemy paddles for 5 seconds
-`;
+// const tutorial = document.createElement('div');
+// tutorial.innerHTML = `
+//   Controls: <br>
+//   W/S to move and D to shoot (Left Player) <br>
+//   Arrow Up/Down to move and Arrow Left to shoot (Right Player) <br>
+//   Bullets freeze enemy paddles for 5 seconds
+// `;
 
 const scoreboard = document.createElement('div');
 scoreboard.id = 'scoreboard';
