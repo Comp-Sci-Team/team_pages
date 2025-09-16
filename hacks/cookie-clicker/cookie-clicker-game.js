@@ -25,6 +25,7 @@ const cookieButton = document.getElementById("cookie");
 const cookieCountDisplay = document.getElementById("cookie-count");
 const gameArea = document.getElementById("game-area");
 
+
 const cookie = {
   cookieMulti: 1,
   cookies: 0,
@@ -44,6 +45,7 @@ const cookie = {
     }
   },
 };
+
 
 const shop = {
   upgrades: [],
@@ -68,10 +70,12 @@ const shop = {
       for (let i = 0; i < this.forSale.length; i++) {
         const forSaleItemInfo = this.forSale[i];
 
+
         const shopButton = document.createElement("button");
         shopButton.className = `bg-slate-500 hover:bg-slate-600 text-white px-4 py-2 mb-2`;
         shopButton.innerHTML = `${forSaleItemInfo.emoji} ${forSaleItemInfo.name} (${forSaleItemInfo.price} 🍪)`;
         shopContainer.appendChild(shopButton);
+
 
         shopButton.addEventListener("click", () => {
           if (cookie.cookies < forSaleItemInfo.price) {
@@ -80,10 +84,12 @@ const shop = {
           }
           cookie.addCookies(-1 * forSaleItemInfo.price);
 
+
           gameLoop.updateCookieMulti(
             forSaleItemInfo.name,
             forSaleItemInfo.multiplier,
           );
+
 
           shopButton.remove();
         });
@@ -92,10 +98,12 @@ const shop = {
       for (let i = 0; i < this.forSale.length; i++) {
         const forSaleItemInfo = this.forSale[i];
 
+
         const shopButton = document.createElement("button");
         shopButton.className = `bg-slate-500 hover:bg-slate-600 text-white px-4 py-2 mb-2`;
         shopButton.innerHTML = `${forSaleItemInfo.emoji} ${forSaleItemInfo.name} (${forSaleItemInfo.price} 🍪)`;
         shopContainer.appendChild(shopButton);
+
 
         shopButton.addEventListener("click", () => {
           if (cookie.cookies < forSaleItemInfo.price) {
@@ -103,6 +111,7 @@ const shop = {
             return;
           }
           cookie.addCookies(-1 * forSaleItemInfo.price);
+
 
           gameLoop.addAutoClicker(
             forSaleItemInfo.name,
@@ -151,6 +160,7 @@ const shop = {
   },
 };
 
+
 const gameLoop = {
   autoClickers: {},
   upgrades: {},
@@ -167,8 +177,10 @@ const gameLoop = {
     localStorage.setItem("savedShop", JSON.stringify(this.autoClickers));
     this.runLoop();
 
+
     const purchased = shopItems.find(it => it.name === itemName);
     if (purchased) emojiBuddies.spawnEmoji(purchased.emoji);
+
 
   },
   updateCookieMulti(itemName, amt) {
@@ -198,9 +210,11 @@ const gameLoop = {
         };
       }
 
+
       //get saved autoclickers (local storage)
       const autoClickersData = JSON.parse(data);
       this.autoClickers = autoClickersData;
+
 
       //for every item in autoClickers data, find its corresponding cookie from the shop (by its name).
       const keys = Object.keys(this.autoClickers);
@@ -212,8 +226,10 @@ const gameLoop = {
           continue;
         }
 
+
         this.cookiesPerSecond +=
           amount * cookiePerSecondAndIndexMap[upgradeName].cps;
+
 
         shop.updateForSalePrice(
           Math.floor(
@@ -234,13 +250,14 @@ const gameLoop = {
     const upgradeData = localStorage.getItem("savedUpgrades");
     if (upgradeData) {
       this.upgrades = JSON.parse(upgradeData);
-      cookie.cookieMulti += this.upgrades["2X Clicks"];
+      cookie.cookieMulti += (this.upgrades["2X Clicks"] || 0);
     }
   },
   getAmount(cookieName) {
-    return this.autoClickers[cookieName];
+    return this.autoClickers[cookieName] || 0;
   },
 };
+
 
 const emojiBuddies = {
   getBounds() {
@@ -257,45 +274,57 @@ const emojiBuddies = {
   spawnEmoji(emojiString) {
     const bounds = this.getBounds();
 
+
     // Create emoji element
     const emoji = document.createElement("div");
     emoji.textContent = emojiString;
     emoji.style.position = "absolute";
     emoji.style.fontSize = "2rem";
 
+
     // Random start inside bounding box
     let x = bounds.left + Math.random() * (bounds.width - 32);
     let y = bounds.top + Math.random() * (bounds.height - 32);
 
+
     emoji.style.left = `${x}px`;
     emoji.style.top = `${y}px`;
 
+
     // Add emoji to body (not inside gameArea, since we're using page coords)
     document.body.appendChild(emoji);
+
 
     // Random velocity
     let dx = (Math.random() < 0.5 ? -1 : 1) * 2;
     let dy = (Math.random() < 0.5 ? -1 : 1) * 2;
 
+
     function animate() {
       x += dx;
       y += dy;
+
 
       // Bounce off actual bounds
       if (x <= bounds.left || x + 32 >= bounds.right) dx *= -1;
       if (y <= bounds.top || y + 32 >= bounds.bottom) dy *= -1;
 
+
       emoji.style.left = `${x}px`;
       emoji.style.top = `${y}px`;
 
+
       requestAnimationFrame(animate);
     }
+
 
     animate();
   },
 };
 
+
 // The code Bellow is for Main Shop
+
 
 const grandma = {
   name: "Grandma",
@@ -305,6 +334,7 @@ const grandma = {
   cookiesPerSecond: 1,
 };
 
+
 const factory = {
   name: "Factory",
   emoji: "🏭",
@@ -312,6 +342,7 @@ const factory = {
   priceIncrementer: 1.4,
   cookiesPerSecond: 4,
 };
+
 
 const mangotemple = {
   name: "Mango Temple",
@@ -321,6 +352,7 @@ const mangotemple = {
   cookiesPerSecond: 10,
 };
 
+
 const bank = {
   name: "Bank",
   emoji: "🏦",
@@ -328,6 +360,7 @@ const bank = {
   priceIncrementer: 1.1,
   cookiesPerSecond: 20,
 };
+
 
 const CookieIsland = {
   name: "Cookie Island",
@@ -337,6 +370,7 @@ const CookieIsland = {
   cookiesPerSecond: 50,
 };
 
+
 const CookieMaster = {
   name: "Cookie Master",
   emoji: "🍪",
@@ -344,6 +378,7 @@ const CookieMaster = {
   priceIncrementer: 1.1,
   cookiesPerSecond: 100,
 };
+
 
 const CookiePlanet = {
   name: "Cookie Planet",
@@ -353,6 +388,7 @@ const CookiePlanet = {
   cookiesPerSecond: 500,
 };
 
+
 const JavaScriptConsle = {
   name: "JavaScript Console",
   emoji: "💻",
@@ -361,7 +397,10 @@ const JavaScriptConsle = {
 };
 
 
+
+
 const shopItems = [];
+
 
 shopItems.push(grandma);
 shopItems.push(factory);
@@ -372,7 +411,9 @@ shopItems.push(CookieMaster);
 shopItems.push(CookiePlanet);
 shopItems.push(JavaScriptConsle);
 
+
 // The code Bellow is for Upgrades Shop
+
 
 const x2Click = {
   name: "2X Clicks",
@@ -382,6 +423,7 @@ const x2Click = {
   multiplier: 2,
 };
 
+
 const x3Click = {
   name: "3X Clicks",
   emoji: "🖱",
@@ -389,6 +431,7 @@ const x3Click = {
   itemEffected: "click",
   multiplier: 3,
 };
+
 
 const FastFlippers = {
   name: "Fast Flippers",
@@ -398,6 +441,7 @@ const FastFlippers = {
   multiplier: 10,
 };
 
+
 const ThousandHands = {
   name: "Thousand Hands",
   emoji: "🖐️",
@@ -406,10 +450,12 @@ const ThousandHands = {
   multiplier: 100,
 };
 
+
 shop.upgrades.push(x2Click);
 shop.upgrades.push(x3Click);
 shop.upgrades.push(FastFlippers);
 shop.upgrades.push(ThousandHands);
+
 
 shop.addItemForSale(grandma);
 shop.addItemForSale(factory);
@@ -438,3 +484,4 @@ cookieButton.addEventListener("click", () => {
   gameLoop.getAmount("Cookie Planet");
   gameLoop.getAmount("JavaScript Console");
 });
+
