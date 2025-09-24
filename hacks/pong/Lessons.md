@@ -32,14 +32,15 @@ let result = 5 + 3 * 2;
 This calculates 5 + (3 × 2) and stores the result in result.
 
 🧩 Key Operators in JavaScript
-|  |  |  |  | 
-| + |  | 4 + 2 | 6 | 
-| - |  | 7 - 3 | 4 | 
-| * |  | 5 * 2 | 10 | 
-| / |  | 8 / 4 | 2 | 
-| % |  | 9 % 4 | 1 | 
-| ** |  | 2 ** 3 | 8 | 
 
+| Operator         | Symbol | Example     | Result | JS Code to Get Result       |
+|------------------|--------|-------------|--------|-----------------------------|
+| Addition         | `+`    | `2 + 3`     | `5`    | `console.log(2 + 3);`       |
+| Subtraction      | `-`    | `5 - 2`     | `3`    | `console.log(5 - 2);`       |
+| Multiplication   | `*`    | `4 * 3`     | `12`   | `console.log(4 * 3);`       |
+| Division         | `/`    | `10 / 2`    | `5`    | `console.log(10 / 2);`      |
+| Modulus (Remainder) | `%` | `7 % 3`     | `1`    | `console.log(7 % 3);`       |
+| Exponentiation   | `**`   | `2 ** 3`    | `8`    | `console.log(2 ** 3);`      |
 
 
 🧠 Variables in Expressions
@@ -69,9 +70,6 @@ let expression = a * b + c ** 2 - (a + c);
 console.log(expression);
 
 
-Can you predict the output before running it?
-
-Would you like to turn this into an interactive quiz, a mini project, or a game-like challenge next? I can also show how expressions work in Python or C++ if you're exploring other languages!
 
 
 
