@@ -1,5 +1,5 @@
 ---
-layout: OpenCs
+layout: opencs
 title: Pong Game Lesson
 permalink: /pong-lessons/
 ---
