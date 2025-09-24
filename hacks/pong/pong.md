@@ -68,11 +68,18 @@ Bullets freeze enemy paddles for 5 seconds
 <body>
 
 <div id="LessonSidebar" class="sidebar">
+	<div>
 	<br/>
 	<h2>CS Concept Lesson</h2>
 	<br/>
+	<h3> Easy Concept: Mathematical Expressions </h3>
+	<br/>
+	</div>
+	<br/>
 
-  	<button class="closebtn" onclick="closeNav()">Close Lesson</button>  
+  	<button type="button" onclick="closeNav()" style="padding: 15px 30px; cursor:pointer;">
+	Close Lesson
+	</button>
 </div>
 
 <div id="main">
