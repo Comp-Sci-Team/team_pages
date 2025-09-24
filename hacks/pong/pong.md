@@ -70,7 +70,7 @@ Bullets freeze enemy paddles for 5 seconds
 <div id="LessonSidebar" class="sidebar">
 	<div>
 	<br/>
-	<h2>CS Concept Lesson</h2>
+	<h2><b>CS Concept Lesson</b></h2>
 	<br/>
 	<h3> Easy Concept: Mathematical Expressions </h3>
 	<br/>
@@ -83,13 +83,25 @@ Bullets freeze enemy paddles for 5 seconds
 </div>
 
 <div id="main">
-  <button class="openbtn" onclick="openNav()">☰ Open Lesson</button>  
+  <button class="openbtn" onclick="triggerNav()">☰ Open Lesson</button>  
 </div>
 
 <script>
-function openNav() {
-  document.getElementById("LessonSidebar").style.width = "500px";
-  document.getElementById("main").style.marginLeft = "250px";
+var sidebarOpen = false;
+
+function triggerNav() {
+	if (!sidebarOpen)
+	{
+		document.getElementById("LessonSidebar").style.width = "400px";
+  		document.getElementById("main").style.marginLeft = "250px";
+		sidebarOpen = true;
+	}
+	else
+	{
+		document.getElementById("LessonSidebar").style.width = "0";
+  		document.getElementById("main").style.marginLeft= "0";
+		sidebarOpen = false;
+	}
 }
 
 function closeNav() {
