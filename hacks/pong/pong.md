@@ -92,7 +92,7 @@ function closeNav() {
   document.getElementById("main").style.marginLeft= "0";
 }
 
-<src="{{site.baseurl}}hacks/pong/pong.js">
+<src="{{site.baseurl}}/hacks/pong/pong.js"></scripts>
 </script>
    
 </body>
