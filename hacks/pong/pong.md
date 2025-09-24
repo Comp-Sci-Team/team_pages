@@ -67,25 +67,26 @@ Bullets freeze enemy paddles for 5 seconds
 </head>
 <body>
 
-<div id="mySidebar" class="sidebar">
+<div id="LessonSidebar" class="sidebar">
 	<br/>
 	<h2>CS Concept Lesson</h2>
+	<br/>
 
-  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">Close</a>
+  	<button class="closebtn" onclick="closeNav()">Close Lesson</button>  
 </div>
 
 <div id="main">
-  <button class="openbtn" onclick="openNav()">☰ Open Sidebar</button>  
+  <button class="openbtn" onclick="openNav()">☰ Open Lesson</button>  
 </div>
 
 <script>
 function openNav() {
-  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("LessonSidebar").style.width = "500px";
   document.getElementById("main").style.marginLeft = "250px";
 }
 
 function closeNav() {
-  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("LessonSidebar").style.width = "0";
   document.getElementById("main").style.marginLeft= "0";
 }
 </script>
