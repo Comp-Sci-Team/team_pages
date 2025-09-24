@@ -39,7 +39,7 @@ This calculates 5 + (3 × 2) and stores the result in result.
 | Subtraction      | `-`    | `5 - 2`     | `3`    | `console.log(5 - 2);`       |
 | Multiplication   | `*`    | `4 * 3`     | `12`   | `console.log(4 * 3);`       |
 | Division         | `/`    | `10 / 2`    | `5`    | `console.log(10 / 2);`      |
-| Modulus (Remainder) | `%` | `7 % 3`     | `1`    | `console.log(7 % 3);`       |
+| Remainder        | `%` | `7 % 3`     | `1`    | `console.log(7 % 3);`       |
 | Exponentiation   | `**`   | `2 ** 3`    | `8`    | `console.log(2 ** 3);`      |
 
 
