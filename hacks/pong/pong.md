@@ -77,8 +77,6 @@ Bullets freeze enemy paddles for 5 seconds
 
 <div id="main">
   <button class="openbtn" onclick="openNav()">☰ Open Sidebar</button>  
-  <h2>Collapsed Sidebar</h2>
-  <p>Click on the hamburger menu/bar icon to open the sidebar, and push this content to the right.</p>
 </div>
 
 <script>
@@ -91,9 +89,10 @@ function closeNav() {
   document.getElementById("mySidebar").style.width = "0";
   document.getElementById("main").style.marginLeft= "0";
 }
-
-<src="{{site.baseurl}}/hacks/pong/pong.js">
 </script>
+
+
+<script src="{{site.baseurl}}/hacks/pong/pong.js"></script>
    
 </body>
 </html> 
