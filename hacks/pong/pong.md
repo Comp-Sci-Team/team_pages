@@ -68,11 +68,10 @@ Bullets freeze enemy paddles for 5 seconds
 <body>
 
 <div id="mySidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
+	<br/>
+	<h2>CS Concept Lesson</h2>
+
+  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">Close</a>
 </div>
 
 <div id="main">
