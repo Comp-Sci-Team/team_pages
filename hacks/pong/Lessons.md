@@ -5,10 +5,10 @@ permalink: /pong-lessons/
 ---
 
 
-### Pong Game Lessons
+### Pong Game Lessons Java Script
 
 
-### Group 1
+### Roles
 
 | Role            | Name                 | GitHub |
 |:---------------:|:--------------------:|:------:|
@@ -70,8 +70,65 @@ let expression = a * b + c ** 2 - (a + c);
 console.log(expression);
 
 
+### 🖥️ Interactive JavaScript Console
 
+Type a command below and click **Run** to see the result.
 
+<div id="console-container">
+  <input type="text" id="console-input" placeholder="Type JavaScript here..." />
+  <button onclick="runCommand()">Run</button>
+  <pre id="console-output"></pre>
+</div>
 
+<style>
+  #console-container {
+    margin-top: 20px;
+    padding: 10px;
+    background: #1e1e1e;
+    color: #eee;
+    font-family: monospace;
+    border-radius: 8px;
+  }
+  #console-input {
+    width: 70%;
+    padding: 8px;
+    font-size: 1em;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+  }
+  button {
+    padding: 8px 12px;
+    margin-left: 10px;
+    background: #007acc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  #console-output {
+    margin-top: 10px;
+    white-space: pre-wrap;
+  }
+</style>
 
+<script>
+  function runCommand() {
+    const input = document.getElementById("console-input").value;
+    const output = document.getElementById("console-output");
+    try {
+      const result = eval(input);
+      output.textContent = `> ${input}\n${result}`;
+    } catch (err) {
+      output.textContent = `> ${input}\nError: ${err.message}`;
+    }
+  }
+</script>
 
+---
+
+### 🧪 Try These Examples
+
+```js
+2 + 3 * 4
