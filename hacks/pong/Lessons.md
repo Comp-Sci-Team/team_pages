@@ -130,7 +130,7 @@ console.log(expression);
   function checkAnswer() {
     const input = document.getElementById("user-answer").value.trim();
     const feedback = document.getElementById("feedback");
-    const correctAnswer = "2005";
+    const correctAnswer = "205";
 
     if (input === correctAnswer) {
       feedback.textContent = "✅ Correct! You nailed it!";
