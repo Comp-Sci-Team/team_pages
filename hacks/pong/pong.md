@@ -77,29 +77,26 @@ Bullets freeze enemy paddles for 5 seconds
 	</div>
 	<br/>
 
-	### Lessons: 💻 Mathmatical Expresions
-
-	📌 What Is a Mathematical Expression in Code?
-	In programming, a mathematical expression is a line of code that calculates a value using numbers, variables, and operators—just like in math class!
+	<b>What Is a Mathematical Expression in Code?</b>
+	In programming, a mathematical expression is a block of code used to return a mathematical value.
 	Example:
 	let result = 5 + 3 * 2;
 
+	This calculates 5 + (3 × 2) and stores the answer in in the variable "result".
 
-	This calculates 5 + (3 × 2) and stores the result in result.
+	<b>Key Operators in JavaScript</b>
 
-	🧩 Key Operators in JavaScript
-
-	| Operator         | Symbol | Example     | Result | JS Code to Get Result       |
+	| Operator         | Symbol | Example     | Result | Print result       |
 	|------------------|--------|-------------|--------|-----------------------------|
 	| Addition         | `+`    | `2 + 3`     | `5`    | `console.log(2 + 3);`       |
 	| Subtraction      | `-`    | `5 - 2`     | `3`    | `console.log(5 - 2);`       |
 	| Multiplication   | `*`    | `4 * 3`     | `12`   | `console.log(4 * 3);`       |
 	| Division         | `/`    | `10 / 2`    | `5`    | `console.log(10 / 2);`      |
-	| Remainder        | `%` | `7 % 3`     | `1`    | `console.log(7 % 3);`       |
+	| Modulus        | `%` | `7 % 3`     | `1`    | `console.log(7 % 3);`       |
 	| Exponentiation   | `**`   | `2 ** 3`    | `8`    | `console.log(2 ** 3);`      |
 
 
-	🧠 Variables in Expressions
+	<b>Variables in Expressions</b>
 	You can use variables to store values and build expressions:
 	let x = 10;
 	let y = 3;
@@ -107,26 +104,15 @@ Bullets freeze enemy paddles for 5 seconds
 
 
 
-	🔍 Order of Operations
+	<b>Order of Operations</b>
 	Just like in math, JavaScript follows PEMDAS:
 	- Parentheses
 	- Exponents
 	- M/D Multiplication/Division (left to right)
 	- A/S Addition/Subtraction (left to right)
-	let result = (4 + 2) * 3; // = 6 × 3 = 18
 
 
-
-	🧪 Practice Challenge
-	Try writing this in JavaScript:
-	let a = 5;
-	let b = 2;
-	let c = 3;
-	let expression = a * b + c ** 2 - (a + c);
-	console.log(expression);
-
-
-	### 🖥️ Interactive JavaScript Console
+	<h4>Interactive JavaScript Console</h4>
 
 	Type a command below and click **Run** to see the result.
 
@@ -167,6 +153,19 @@ function closeNav() {
   document.getElementById("LessonSidebar").style.width = "0";
   document.getElementById("main").style.marginLeft= "0";
 }
+</script>
+
+<script>
+  function runCommand() {
+    const input = document.getElementById("console-input").value;
+    const output = document.getElementById("console-output");
+    try {
+      const result = eval(input);
+      output.textContent = `> ${input}\n${result}`;
+    } catch (err) {
+      output.textContent = `> ${input}\nError: ${err.message}`;
+    }
+  }
 </script>
 
 
