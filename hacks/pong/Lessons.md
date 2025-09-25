@@ -70,6 +70,83 @@ let expression = a * b + c ** 2 - (a + c);
 console.log(expression);
 
 
+### Challenge 1:
+
+<!-- 🎉 Answer Console with Confetti -->
+<h3>🎯 Challenge: What is 4 + 3 * 2?</h3>
+<p>Type your answer below and hit "Check Answer"</p>
+
+<div id="answer-console">
+  <input type="text" id="user-answer" placeholder="Your answer..." />
+  <button onclick="checkAnswer()">Check Answer</button>
+  <p id="feedback"></p>
+  <canvas id="confetti-canvas"></canvas>
+</div>
+
+<style>
+  #answer-console {
+    margin-top: 20px;
+    padding: 10px;
+    background: #222;
+    color: #fff;
+    font-family: monospace;
+    border-radius: 8px;
+    position: relative;
+  }
+  #user-answer {
+    width: 60%;
+    padding: 8px;
+    font-size: 1em;
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 4px;
+  }
+  button {
+    padding: 8px 12px;
+    margin-left: 10px;
+    background: #0f0;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  #feedback {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  #confetti-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+  function checkAnswer() {
+    const input = document.getElementById("user-answer").value.trim();
+    const feedback = document.getElementById("feedback");
+    const correctAnswer = "10";
+
+    if (input === correctAnswer) {
+      feedback.textContent = "✅ Correct! You nailed it!";
+      feedback.style.color = "#0f0";
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    } else {
+      feedback.textContent = "❌ Try again!";
+      feedback.style.color = "#f00";
+    }
+  }
+</script>
+
 ### 🖥️ Interactive JavaScript Console
 
 Type a command below and click **Run** to see the result.
@@ -128,7 +205,3 @@ Type a command below and click **Run** to see the result.
 
 ---
 
-### 🧪 Try These Examples
-
-```js
-2 + 3 * 4
