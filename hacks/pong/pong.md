@@ -133,7 +133,7 @@ Close Lesson
 </div>
 
 <div id="main">
-  <button class="openbtn" onclick="triggerNav()" style="margin-left: 600px">☰ Open Lesson</button>  
+  <button class="openbtn" onclick="triggerNav()" style="margin-left: 500px">☰ Open Lesson</button>  
 </div>
 
 <script>
