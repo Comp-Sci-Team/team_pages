@@ -82,10 +82,8 @@ In programming, a mathematical expression is a block of code used to return a ma
 Example:
 <br/>
 let result = 5 + 3 * 2;
-<br/><br/>
-
 This calculates 5 + (3 × 2) and stores the answer in in the variable "result".
-<br/>
+<br/><br/>
 
 <b>Key Operators in JavaScript</b><br/>
 <ul>
@@ -119,7 +117,7 @@ Just like in math, JavaScript follows PEMDAS:<br/>
 
 <h4>Interactive JavaScript Console</h4><br/>
 
-Type a command below and click **Run** to see the result.<br/>
+Type a command below and click *Run* to see the result.<br/>
 
 <div id="console-container">
 <input type="text" id="console-input" placeholder="Type JavaScript here..." />
