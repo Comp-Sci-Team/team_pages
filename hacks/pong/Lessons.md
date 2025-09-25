@@ -147,6 +147,92 @@ console.log(expression);
   }
 </script>
 
+<h3>🧪 Experiment: Calculate the Area of a Rectangle</h3>
+<p>Type a JavaScript expression that calculates the area using <code>width</code> and <code>height</code>.</p>
+
+<pre><code>let width = 5;
+let height = 10;
+</code></pre>
+
+<div id="experiment-console">
+  <input type="text" id="experiment-input" placeholder="Type your expression..." />
+  <button onclick="runExperiment()">Run</button>
+  <p id="experiment-feedback"></p>
+  <canvas id="experiment-confetti"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+  function runExperiment() {
+    const input = document.getElementById("experiment-input").value.trim();
+    const feedback = document.getElementById("experiment-feedback");
+
+    try {
+      let width = 5;
+      let height = 10;
+      let result = eval(input);
+
+      if (result === width * height) {
+        feedback.textContent = `✅ Correct! Area is ${result}.`;
+        feedback.style.color = "#0f0";
+        confetti({
+          particleCount: 150,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      } else {
+        feedback.textContent = `❌ Hmm... That gives ${result}. Try again!`;
+        feedback.style.color = "#f00";
+      }
+    } catch (err) {
+      feedback.textContent = `⚠️ Error: ${err.message}`;
+      feedback.style.color = "#ff0";
+    }
+  }
+</script>
+
+<style>
+  #experiment-console {
+    margin-top: 20px;
+    padding: 10px;
+    background: #222;
+    color: #fff;
+    font-family: monospace;
+    border-radius: 8px;
+    position: relative;
+  }
+  #experiment-input {
+    width: 60%;
+    padding: 8px;
+    font-size: 1em;
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 4px;
+  }
+  button {
+    padding: 8px 12px;
+    margin-left: 10px;
+    background: #0f0;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  #experiment-feedback {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  #experiment-confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
 ### 🖥️ Interactive JavaScript Console
 
 Type a command below and click **Run** to see the result.
