@@ -68,70 +68,72 @@ Bullets freeze enemy paddles for 5 seconds
 <body>
 
 <div id="LessonSidebar" class="sidebar">
-	<div>
-	<br/>
-	<h2><b>CS Concept Lesson</b></h2>
-	<br/>
-	<h3> Easy Concept: Mathematical Expressions </h3>
-	<br/>
-	</div>
-	<br/>
+<div>
+<br/>
+<h2><b>CS Concept Lesson</b></h2>
+<br/>
+<h3> Easy Concept: Mathematical Expressions </h3>
+<br/>
+</div>
+<br/>
 
-	<b>What Is a Mathematical Expression in Code?</b><br/>
-	In programming, a mathematical expression is a block of code used to return a mathematical value.
-	Example:
-	<br/>
-	let result = 5 + 3 * 2;
-	<br/><br/>
+<b>What Is a Mathematical Expression in Code?</b><br/>
+In programming, a mathematical expression is a block of code used to return a mathematical value.
+Example:
+<br/>
+let result = 5 + 3 * 2;
+<br/><br/>
 
-	This calculates 5 + (3 × 2) and stores the answer in in the variable "result".
-	<br/>
+This calculates 5 + (3 × 2) and stores the answer in in the variable "result".
+<br/>
 
-	<b>Key Operators in JavaScript</b><br/>
+<b>Key Operators in JavaScript</b><br/>
+<ul>
+	<li>Addition: +</li>
+	<li>Subtraction: -</li>
+	<li>Multiplication: *</li>
+	<li>Division: /</li>
+	<li>Modulus: %</li>
+	<li>Exponent: **</li>
+</ul>
+<br/>
 
-	| Operator         | Symbol | Example     | Result | Print result       |
-	|------------------|--------|-------------|--------|-----------------------------|
-	| Addition         | `+`    | `2 + 3`     | `5`    | `console.log(2 + 3);`       |
-	| Subtraction      | `-`    | `5 - 2`     | `3`    | `console.log(5 - 2);`       |
-	| Multiplication   | `*`    | `4 * 3`     | `12`   | `console.log(4 * 3);`       |
-	| Division         | `/`    | `10 / 2`    | `5`    | `console.log(10 / 2);`      |
-	| Modulus        | `%` | `7 % 3`     | `1`    | `console.log(7 % 3);`       |
-	| Exponentiation   | `**`   | `2 ** 3`    | `8`    | `console.log(2 ** 3);`      |
-
-
-	<b>Variables in Expressions</b><br/>
-	You can use variables to store values and build expressions:<br/>
-	let x = 10;<br/>
-	let y = 3;<br/>
-	let total = x + y * 2; // total = 10 + (3 × 2) = 16<br/>
-	<br/>
-
-
-	<b>Order of Operations</b><br/>
-	Just like in math, JavaScript follows PEMDAS:<br/>
-	- Parentheses<br/>
-	- Exponents<br/>
-	- M/D Multiplication/Division (left to right)<br/>
-	- A/S Addition/Subtraction (left to right)<br/>
+<b>Variables in Expressions</b><br/>
+You can use variables to store values and build expressions:<br/>
+let x = 10;<br/>
+let y = 3;<br/>
+let total = x + y * 2; // total = 10 + (3 × 2) = 16<br/>
+<br/>
 
 
-	<h4>Interactive JavaScript Console</h4><br/>
+<b>Order of Operations</b><br/>
+Just like in math, JavaScript follows PEMDAS:<br/>
+<ol>
+	<li>Parentheses</li>
+	<li>Exponents</li>
+	<li>Multiplication/Division</li>
+	<li>Addition/Subtraction</li>
+</ol>
+<br/>
 
-	Type a command below and click **Run** to see the result.<br/>
 
-	<div id="console-container">
-	<input type="text" id="console-input" placeholder="Type JavaScript here..." />
-	<button onclick="runCommand()">Run</button>
-	<pre id="console-output"></pre>
-	</div>
+<h4>Interactive JavaScript Console</h4><br/>
 
-  	<button type="button" onclick="closeNav()" style="padding: 15px 30px; cursor:pointer;">
-	Close Lesson
-	</button>
+Type a command below and click **Run** to see the result.<br/>
+
+<div id="console-container">
+<input type="text" id="console-input" placeholder="Type JavaScript here..." />
+<button onclick="runCommand()">Run</button>
+<pre id="console-output"></pre>
+</div>
+
+<button type="button" onclick="closeNav()" style="padding: 15px 30px; cursor:pointer;">
+Close Lesson
+</button>
 </div>
 
 <div id="main">
-  <button class="openbtn" onclick="triggerNav()" style="margin-left: 400px">☰ Open Lesson</button>  
+  <button class="openbtn" onclick="triggerNav()" style="margin-left: 600px">☰ Open Lesson</button>  
 </div>
 
 <script>
@@ -141,20 +143,17 @@ function triggerNav() {
 	if (!sidebarOpen)
 	{
 		document.getElementById("LessonSidebar").style.width = "700px";
-  		document.getElementById("main").style.marginLeft = "250px";
 		sidebarOpen = true;
 	}
 	else
 	{
 		document.getElementById("LessonSidebar").style.width = "0";
-  		document.getElementById("main").style.marginLeft= "0";
 		sidebarOpen = false;
 	}
 }
 
 function closeNav() {
   document.getElementById("LessonSidebar").style.width = "0";
-  document.getElementById("main").style.marginLeft= "0";
 }
 </script>
 
