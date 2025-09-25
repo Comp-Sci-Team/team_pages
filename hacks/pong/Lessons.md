@@ -42,13 +42,15 @@ This calculates 5 + (3 × 2) and stores the result in result.
 | Remainder        | `%` | `7 % 3`     | `1`    | `console.log(7 % 3);`       |
 | Exponentiation   | `**`   | `2 ** 3`    | `8`    | `console.log(2 ** 3);`      |
 
+You can also use inequality operators in conditional statements (>, <, ==, <=, =>)
+
+
 
 🧠 Variables in Expressions
 You can use variables to store values and build expressions:
 let x = 10;
 let y = 3;
 let total = x + y * 2; // total = 10 + (3 × 2) = 16
-
 
 
 🔍 Order of Operations
@@ -58,6 +60,28 @@ Just like in math, JavaScript follows PEMDAS:
 - M/D Multiplication/Division (left to right)
 - A/S Addition/Subtraction (left to right)
 let result = (4 + 2) * 3; // = 6 × 3 = 18
+
+## Examples of Mathematical Expressions in pong
+Pong is a game that requires a lot of mathematical operations, here are some of the few:
+Ball physics:
+```
+if(ballY - ballRadius < 0 || ballY + ballRadius > canvas.height) ballSpeedY *= -1;
+
+if(ballX - ballRadius < 20 + paddleWidth && ballY > leftY && ballY < leftY + paddleHeight){
+	ballSpeedX *= -1; ballX = 20 + paddleWidth + ballRadius;
+	sndPaddle.play();
+}
+if(ballX + ballRadius > canvas.width - 20 - paddleWidth && ballY > rightY && ballY < rightY + paddleHeight){
+	ballSpeedX *= -1; ballX = canvas.width - 20 - paddleWidth - ballRadius;
+	sndPaddle.play();
+}
+```
+This code checks if the ball is on the border of the screen and then reverses its direction.
+
+``` 
+ballY - ballRadius < 0
+```
+This line checks if the ball is at the top of the screen (0 is the top because javascript follows a y-down system)
 
 
 ## 🧪 Practice Challenges
@@ -73,7 +97,7 @@ let result = (4 + 2) * 3; // = 6 × 3 = 18
   <button onclick="checkAnswer()">Check Answer</button>
   <p id="feedback"></p>
   <canvas id="confetti-canvas"></canvas>
-</div>
+</div>s
 
 <style>
   #answer-console {
