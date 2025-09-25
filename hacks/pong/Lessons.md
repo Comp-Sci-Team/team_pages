@@ -73,7 +73,7 @@ console.log(expression);
 ### Challenge 1:
 
 <!-- 🎉 Answer Console with Confetti -->
-<h3>🎯 Challenge: What is 4 + 3 * 2?</h3>
+<h3>🎯 Challenge: What is the out put when you type let 10 * 20 + 5?</h3>
 <p>Type your answer below and hit "Check Answer"</p>
 
 <div id="answer-console">
@@ -130,14 +130,14 @@ console.log(expression);
   function checkAnswer() {
     const input = document.getElementById("user-answer").value.trim();
     const feedback = document.getElementById("feedback");
-    const correctAnswer = "10";
+    const correctAnswer = "2005";
 
     if (input === correctAnswer) {
       feedback.textContent = "✅ Correct! You nailed it!";
       feedback.style.color = "#0f0";
       confetti({
-        particleCount: 150,
-        spread: 70,
+        particleCount: 200,
+        spread: 95,
         origin: { y: 0.6 }
       });
     } else {
