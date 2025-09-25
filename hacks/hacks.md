@@ -78,16 +78,7 @@ lxdData:
       Game: "/solitaire"
       Lessons: "/solitaire/lesson"
       Image: "/images/solitaire.png"
-      Alt: "Solitaire Image"
-    - Title: "Pong Game"
-      Genre: "Coding"
-      Level: "2"
-      Description: "Learn about JS Operators and Data Abstraction."
-      Categories: ["JavaScript", "Game Coding", "Innovation"]
-      Game: "{{site.baseurl}}/pong"
-      Lessons: "{{site.baseurl}}/pong-lessons
-      Image: "/images/nothing"
-      Alt: "Pong image"
+      Alt: "Solitaire Image" 
     
 ---
 
