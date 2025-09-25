@@ -10,21 +10,21 @@ permalink: /pong-lessons/
 
 ### Roles
 
-| Role            | Name                 | GitHub |
-|:---------------:|:--------------------:|:------:|
-| 🧭 Scrum Master | **Devin Bir**        | [GitHub](https://github.com/kush1434) |
-| 📋 Assistant Scrum | **Jonah Larsson**   | [GitHub](https://github.com/frogle-dev) |
-| 💻 Engineer     | **Malachi Mendoza**         | [GitHub](https://github.com/ellioty15) |
-| 💻 Engineer     | **Aarush Bandi**         | [GitHub](https://github.com/Bandi-A-54547) |
-| 💻 Engineer     | **Sri Rohit Varma Datla**         | [GitHub](https://github.com/douprojo) |
-| 💻 Engineer     | **Santiago Alverado**         | [GitHub](https://github.com/Flv0ur) |
+| Role            | Name                 |
+|:---------------:|:--------------------:|
+| 🧭 Scrum Master | **Devin Bir**        | 
+| 📋 Assistant Scrum/Enginner | **Jonah Larsson**   |
+| 🧪 Tester | **Malachi Mendoza**         |
+| 🧪 Tester | **Aarush Bandi**         |
+| 🏁 Tester/Finisher    | **Santiago Alverado**         | 
+| 💻 Engineer/Finisher   | **Sri Rohit Varma Datla**         | 
 
 ### **Lessons On JavaScript**
 
 ### Lessons: 💻 Mathmatical Expresions
 
 📌 What Is a Mathematical Expression in Code?
-In programming, a mathematical expression is a line of code that calculates a value using numbers, variables, and operators—just like in math class!
+In programming, a mathematical expression is a line of code that calculates a value using numbers, variables, and operators.
 Example:
 let result = 5 + 3 * 2;
 
@@ -60,15 +60,7 @@ Just like in math, JavaScript follows PEMDAS:
 let result = (4 + 2) * 3; // = 6 × 3 = 18
 
 
-
-🧪 Practice Challenge
-Try writing this in JavaScript:
-let a = 5;
-let b = 2;
-let c = 3;
-let expression = a * b + c ** 2 - (a + c);
-console.log(expression);
-
+## 🧪 Practice Challenges
 
 ### Challenge 1:
 
