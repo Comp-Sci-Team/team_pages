@@ -77,6 +77,65 @@ Bullets freeze enemy paddles for 5 seconds
 	</div>
 	<br/>
 
+	### Lessons: 💻 Mathmatical Expresions
+
+	📌 What Is a Mathematical Expression in Code?
+	In programming, a mathematical expression is a line of code that calculates a value using numbers, variables, and operators—just like in math class!
+	Example:
+	let result = 5 + 3 * 2;
+
+
+	This calculates 5 + (3 × 2) and stores the result in result.
+
+	🧩 Key Operators in JavaScript
+
+	| Operator         | Symbol | Example     | Result | JS Code to Get Result       |
+	|------------------|--------|-------------|--------|-----------------------------|
+	| Addition         | `+`    | `2 + 3`     | `5`    | `console.log(2 + 3);`       |
+	| Subtraction      | `-`    | `5 - 2`     | `3`    | `console.log(5 - 2);`       |
+	| Multiplication   | `*`    | `4 * 3`     | `12`   | `console.log(4 * 3);`       |
+	| Division         | `/`    | `10 / 2`    | `5`    | `console.log(10 / 2);`      |
+	| Remainder        | `%` | `7 % 3`     | `1`    | `console.log(7 % 3);`       |
+	| Exponentiation   | `**`   | `2 ** 3`    | `8`    | `console.log(2 ** 3);`      |
+
+
+	🧠 Variables in Expressions
+	You can use variables to store values and build expressions:
+	let x = 10;
+	let y = 3;
+	let total = x + y * 2; // total = 10 + (3 × 2) = 16
+
+
+
+	🔍 Order of Operations
+	Just like in math, JavaScript follows PEMDAS:
+	- Parentheses
+	- Exponents
+	- M/D Multiplication/Division (left to right)
+	- A/S Addition/Subtraction (left to right)
+	let result = (4 + 2) * 3; // = 6 × 3 = 18
+
+
+
+	🧪 Practice Challenge
+	Try writing this in JavaScript:
+	let a = 5;
+	let b = 2;
+	let c = 3;
+	let expression = a * b + c ** 2 - (a + c);
+	console.log(expression);
+
+
+	### 🖥️ Interactive JavaScript Console
+
+	Type a command below and click **Run** to see the result.
+
+	<div id="console-container">
+	<input type="text" id="console-input" placeholder="Type JavaScript here..." />
+	<button onclick="runCommand()">Run</button>
+	<pre id="console-output"></pre>
+	</div>
+
   	<button type="button" onclick="closeNav()" style="padding: 15px 30px; cursor:pointer;">
 	Close Lesson
 	</button>
@@ -92,7 +151,7 @@ var sidebarOpen = false;
 function triggerNav() {
 	if (!sidebarOpen)
 	{
-		document.getElementById("LessonSidebar").style.width = "400px";
+		document.getElementById("LessonSidebar").style.width = "700px";
   		document.getElementById("main").style.marginLeft = "250px";
 		sidebarOpen = true;
 	}
