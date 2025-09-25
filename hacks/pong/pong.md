@@ -77,14 +77,17 @@ Bullets freeze enemy paddles for 5 seconds
 	</div>
 	<br/>
 
-	<b>What Is a Mathematical Expression in Code?</b>
+	<b>What Is a Mathematical Expression in Code?</b><br/>
 	In programming, a mathematical expression is a block of code used to return a mathematical value.
 	Example:
+	<br/>
 	let result = 5 + 3 * 2;
+	<br/><br/>
 
 	This calculates 5 + (3 × 2) and stores the answer in in the variable "result".
+	<br/>
 
-	<b>Key Operators in JavaScript</b>
+	<b>Key Operators in JavaScript</b><br/>
 
 	| Operator         | Symbol | Example     | Result | Print result       |
 	|------------------|--------|-------------|--------|-----------------------------|
@@ -96,25 +99,25 @@ Bullets freeze enemy paddles for 5 seconds
 	| Exponentiation   | `**`   | `2 ** 3`    | `8`    | `console.log(2 ** 3);`      |
 
 
-	<b>Variables in Expressions</b>
-	You can use variables to store values and build expressions:
-	let x = 10;
-	let y = 3;
-	let total = x + y * 2; // total = 10 + (3 × 2) = 16
+	<b>Variables in Expressions</b><br/>
+	You can use variables to store values and build expressions:<br/>
+	let x = 10;<br/>
+	let y = 3;<br/>
+	let total = x + y * 2; // total = 10 + (3 × 2) = 16<br/>
+	<br/>
 
 
+	<b>Order of Operations</b><br/>
+	Just like in math, JavaScript follows PEMDAS:<br/>
+	- Parentheses<br/>
+	- Exponents<br/>
+	- M/D Multiplication/Division (left to right)<br/>
+	- A/S Addition/Subtraction (left to right)<br/>
 
-	<b>Order of Operations</b>
-	Just like in math, JavaScript follows PEMDAS:
-	- Parentheses
-	- Exponents
-	- M/D Multiplication/Division (left to right)
-	- A/S Addition/Subtraction (left to right)
 
+	<h4>Interactive JavaScript Console</h4><br/>
 
-	<h4>Interactive JavaScript Console</h4>
-
-	Type a command below and click **Run** to see the result.
+	Type a command below and click **Run** to see the result.<br/>
 
 	<div id="console-container">
 	<input type="text" id="console-input" placeholder="Type JavaScript here..." />
@@ -128,7 +131,7 @@ Bullets freeze enemy paddles for 5 seconds
 </div>
 
 <div id="main">
-  <button class="openbtn" onclick="triggerNav()">☰ Open Lesson</button>  
+  <button class="openbtn" onclick="triggerNav()" style="margin-left: 400px">☰ Open Lesson</button>  
 </div>
 
 <script>
