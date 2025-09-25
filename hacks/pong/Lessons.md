@@ -283,3 +283,137 @@ Type a command below and click **Run** to see the result.
 
 ---
 
+<h3>🎮 Mini Pong Game</h3>
+<canvas id="pongCanvas" width="600" height="400"></canvas>
+
+<div id="pong-console">
+  <input type="text" id="pong-input" placeholder="Type a command (e.g. bg blue)" />
+  <button onclick="runPongCommand()">Run</button>
+  <button onclick="restartPong()">Restart</button>
+  <p id="pong-feedback"></p>
+</div>
+
+<style>
+  #pongCanvas {
+    border: 2px solid #000;
+    background: #eee;
+    display: block;
+    margin-bottom: 10px;
+  }
+  #pong-console {
+    font-family: monospace;
+    background: #222;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  #pong-input {
+    width: 60%;
+    padding: 8px;
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 4px;
+  }
+  button {
+    padding: 8px 12px;
+    margin-left: 10px;
+    background: #0f0;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  const canvas = document.getElementById("pongCanvas");
+  const ctx = canvas.getContext("2d");
+  const feedback = document.getElementById("pong-feedback");
+
+  let ball, paddle1, paddle2, bgColor;
+  let animationId;
+
+  function initGame() {
+    ball = { x: 300, y: 200, dx: 2, dy: 2, radius: 10, color: "red" };
+    paddle1 = { x: 50, y: 180, width: 10, height: 80, color: "black" };
+    paddle2 = { x: 540, y: 180, width: 10, height: 80, color: "black" };
+    bgColor = "#eee";
+  }
+
+  function draw() {
+    ctx.fillStyle = bgColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = paddle1.color;
+    ctx.fillRect(paddle1.x, paddle1.y, paddle1.width, paddle1.height);
+
+    ctx.fillStyle = paddle2.color;
+    ctx.fillRect(paddle2.x, paddle2.y, paddle2.width, paddle2.height);
+
+    ctx.beginPath();
+    ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+    ctx.fillStyle = ball.color;
+    ctx.fill();
+    ctx.closePath();
+
+    ball.x += ball.dx;
+    ball.y += ball.dy;
+
+    if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) ball.dx *= -1;
+    if (ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) ball.dy *= -1;
+
+    animationId = requestAnimationFrame(draw);
+  }
+
+  function runPongCommand() {
+    const input = document.getElementById("pong-input").value.trim().toLowerCase();
+    const parts = input.split(" ");
+    const cmd = parts[0];
+    const val = parts.slice(1).join(" ");
+
+    if (cmd === "bg") {
+      bgColor = val;
+      feedback.textContent = `✅ Background changed to ${val}`;
+    } else if (cmd === "ball") {
+      ball.color = val;
+      feedback.textContent = `✅ Ball color changed to ${val}`;
+    } else if (cmd === "paddle1") {
+      paddle1.color = val;
+      feedback.textContent = `✅ Paddle 1 color changed to ${val}`;
+    } else if (cmd === "paddle2") {
+      paddle2.color = val;
+      feedback.textContent = `✅ Paddle 2 color changed to ${val}`;
+    } else if (cmd === "speed") {
+      const speed = parseFloat(val);
+      if (!isNaN(speed)) {
+        ball.dx = speed;
+        ball.dy = speed;
+        feedback.textContent = `✅ Ball speed set to ${speed}`;
+      } else {
+        feedback.textContent = `❌ Invalid speed`;
+      }
+    } else if (cmd === "size") {
+      const size = parseInt(val);
+      if (!isNaN(size)) {
+        paddle1.height = size;
+        paddle2.height = size;
+        feedback.textContent = `✅ Paddle height set to ${size}`;
+      } else {
+        feedback.textContent = `❌ Invalid size`;
+      }
+    } else {
+      feedback.textContent = `❌ Unknown command`;
+    }
+  }
+
+  function restartPong() {
+    cancelAnimationFrame(animationId);
+    initGame();
+    draw();
+    feedback.textContent = "🔁 Game restarted!";
+  }
+
+  initGame();
+  draw();
+</script>
