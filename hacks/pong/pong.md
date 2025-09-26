@@ -296,11 +296,11 @@ Close Lesson
 </div>
 
 <div id="main">
-  <button class="openbtn" onclick="window.location.href='{{site.baseurl}}/pong-lessons/math';" style="margin-left: 250px">☰ Open Math Expressions Lesson</button>  
+  <button class="openbtn" onclick="window.location.href='{{site.baseurl}}/pong-lessons/math';" style="margin-left: 100px">☰ Open Math Expressions Lesson</button>  
 </div>
 
 <div id="main">
-  <button class="openbtn" onclick="window.location.href='{{site.baseurl}}/pong-lessons/abstraction';" style="margin-left: 500px">☰ Open Data Abstraction Lesson</button>  
+  <button class="openbtn" onclick="window.location.href='{{site.baseurl}}/pong-lessons/abstraction';" style="margin-left: 100px">☰ Open Data Abstraction Lesson</button>  
 </div>
 
 <script>
