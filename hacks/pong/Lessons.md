@@ -307,7 +307,7 @@ Type a command below and click **Run** to see the result.
 
 ---
 
-<h3>🎮 Playable Pong Game</h3>
+<h3>🎮 Ultimate Pong Game</h3>
 <canvas id="pongCanvas" width="600" height="400"></canvas>
 
 <div id="pong-console">
@@ -387,13 +387,37 @@ Type a command below and click **Run** to see the result.
       paddle1.y += paddle1.dy;
       paddle2.y += paddle2.dy;
 
-      // Bounce off walls
+      // Wall collision
       if (ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) ball.dy *= -1;
-      if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) ball.dx *= -1;
 
       // Paddle boundaries
       paddle1.y = Math.max(0, Math.min(canvas.height - paddle1.height, paddle1.y));
       paddle2.y = Math.max(0, Math.min(canvas.height - paddle2.height, paddle2.y));
+
+      // Paddle1 collision
+      if (
+        ball.x - ball.radius <= paddle1.x + paddle1.width &&
+        ball.x - ball.radius >= paddle1.x &&
+        ball.y >= paddle1.y &&
+        ball.y <= paddle1.y + paddle1.height
+      ) {
+        ball.dx = Math.abs(ball.dx);
+      }
+
+      // Paddle2 collision
+      if (
+        ball.x + ball.radius >= paddle2.x &&
+        ball.x + ball.radius <= paddle2.x + paddle2.width &&
+        ball.y >= paddle2.y &&
+        ball.y <= paddle2.y + paddle2.height
+      ) {
+        ball.dx = -Math.abs(ball.dx);
+      }
+
+      // Wall bounce
+      if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) {
+        ball.dx *= -1;
+      }
     }
 
     animationId = requestAnimationFrame(draw);
