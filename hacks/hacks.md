@@ -84,8 +84,8 @@ lxdData:
       Level: "2"
       Description: "Learn about JS Operators and Data Abstraction."
       Categories: ["JavaScript", "Game Coding", "Innovation", "Logic"]
-      Game: "{{site.baseurl}}/pong"
-      Lessons: "{{site.baseurl}}/pong-lessons"
+      Game: "/pong"
+      Lessons: "/pong-lessons"
       Image: "/images/nothing"
       Alt: "Pong Image"
 
