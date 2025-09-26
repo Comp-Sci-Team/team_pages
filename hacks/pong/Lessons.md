@@ -307,13 +307,12 @@ Type a command below and click **Run** to see the result.
 
 ---
 
-<h3>🎮 Mini Pong Game</h3>
+<h3>🎮 Playable Pong Game</h3>
 <canvas id="pongCanvas" width="600" height="400"></canvas>
 
 <div id="pong-console">
-  <input type="text" id="pong-input" placeholder="Type a command (e.g. bg blue)" />
+  <input type="text" id="pong-input" placeholder="Type a command (e.g. start, bg blue)" />
   <button onclick="runPongCommand()">Run</button>
-  <button onclick="restartPong()">Restart</button>
   <p id="pong-feedback"></p>
 </div>
 
@@ -355,13 +354,13 @@ Type a command below and click **Run** to see the result.
   const ctx = canvas.getContext("2d");
   const feedback = document.getElementById("pong-feedback");
 
-  let ball, paddle1, paddle2, bgColor;
-  let animationId;
+  let ball, paddle1, paddle2, bgColor, animationId;
+  let gameRunning = false;
 
   function initGame() {
     ball = { x: 300, y: 200, dx: 2, dy: 2, radius: 10, color: "red" };
-    paddle1 = { x: 50, y: 180, width: 10, height: 80, color: "black" };
-    paddle2 = { x: 540, y: 180, width: 10, height: 80, color: "black" };
+    paddle1 = { x: 50, y: 160, width: 10, height: 80, color: "black", dy: 0 };
+    paddle2 = { x: 540, y: 160, width: 10, height: 80, color: "black", dy: 0 };
     bgColor = "#eee";
   }
 
@@ -381,11 +380,21 @@ Type a command below and click **Run** to see the result.
     ctx.fill();
     ctx.closePath();
 
-    ball.x += ball.dx;
-    ball.y += ball.dy;
+    if (gameRunning) {
+      ball.x += ball.dx;
+      ball.y += ball.dy;
 
-    if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) ball.dx *= -1;
-    if (ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) ball.dy *= -1;
+      paddle1.y += paddle1.dy;
+      paddle2.y += paddle2.dy;
+
+      // Bounce off walls
+      if (ball.y + ball.radius > canvas.height || ball.y - ball.radius < 0) ball.dy *= -1;
+      if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) ball.dx *= -1;
+
+      // Paddle boundaries
+      paddle1.y = Math.max(0, Math.min(canvas.height - paddle1.height, paddle1.y));
+      paddle2.y = Math.max(0, Math.min(canvas.height - paddle2.height, paddle2.y));
+    }
 
     animationId = requestAnimationFrame(draw);
   }
@@ -396,7 +405,18 @@ Type a command below and click **Run** to see the result.
     const cmd = parts[0];
     const val = parts.slice(1).join(" ");
 
-    if (cmd === "bg") {
+    if (cmd === "start") {
+      gameRunning = true;
+      feedback.textContent = "▶️ Game started!";
+    } else if (cmd === "stop") {
+      gameRunning = false;
+      feedback.textContent = "⏸️ Game paused!";
+    } else if (cmd === "restart") {
+      cancelAnimationFrame(animationId);
+      initGame();
+      draw();
+      feedback.textContent = "🔁 Game restarted!";
+    } else if (cmd === "bg") {
       bgColor = val;
       feedback.textContent = `✅ Background changed to ${val}`;
     } else if (cmd === "ball") {
@@ -431,12 +451,17 @@ Type a command below and click **Run** to see the result.
     }
   }
 
-  function restartPong() {
-    cancelAnimationFrame(animationId);
-    initGame();
-    draw();
-    feedback.textContent = "🔁 Game restarted!";
-  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "w") paddle1.dy = -4;
+    if (e.key === "s") paddle1.dy = 4;
+    if (e.key === "u") paddle2.dy = -4;
+    if (e.key === "j") paddle2.dy = 4;
+  });
+
+  document.addEventListener("keyup", (e) => {
+    if (["w", "s"].includes(e.key)) paddle1.dy = 0;
+    if (["u", "j"].includes(e.key)) paddle2.dy = 0;
+  });
 
   initGame();
   draw();
