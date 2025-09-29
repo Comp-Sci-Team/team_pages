@@ -310,6 +310,14 @@ Type a command below and click **Run** to see the result.
   }
 </script>
 
+
+
+### **Homework**
+In order to learn this subject of programming well, you have to practice:
+
+> **Task:** Build a system of functions that can be accessed through the command line. Each of these functions will perform a different mathematical operation(ex: add, subtract). Make at least 6 of these different functions. 
+
+
 ---
 
 <!-- <h3>🎮 Mini Pong Game</h3>
