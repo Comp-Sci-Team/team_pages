@@ -166,7 +166,7 @@ In this example, you can see how we made a new class called "car", which then al
 
 <div id="answer-console">
   <input type="text" id="constructor-answer" placeholder="Type answer here..." />
-  <button onclick="checkAnswer()">Check Answer</button>
+  <button onclick="checkConstructorAnswer()">Check Answer</button>
   <p id="constructor-feedback"></p>
   <canvas id="constructor-confetti"></canvas>
 </div>
@@ -215,7 +215,7 @@ In this example, you can see how we made a new class called "car", which then al
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
-  function checkAnswer() {
+  function checkConstructorAnswer() {
     const input = document.getElementById("constructor-answer").value.trim();
     const feedback = document.getElementById("constructor-feedback");
     const correctAnswer = "constructor(cost, age, size) {}";
@@ -239,7 +239,7 @@ In this example, you can see how we made a new class called "car", which then al
 
 <div id="answer-console">
   <input type="text" id="const-response" placeholder="Type answer here..." />
-  <button onclick="checkAnswer()">Check Answer</button>
+  <button onclick="checkConstAnswer()">Check Answer</button>
   <p id="const-feedback"></p>
   <canvas id="const-confetti"></canvas>
 </div>
@@ -288,7 +288,7 @@ In this example, you can see how we made a new class called "car", which then al
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
-  function checkAnswer() {
+  function checkConstAnswer() {
     const input = document.getElementById("const-response").value.trim();
     const feedback = document.getElementById("const-feedback");
     const correctAnswer = "const myHouse = new House();";
