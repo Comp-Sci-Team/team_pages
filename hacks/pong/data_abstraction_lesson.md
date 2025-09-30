@@ -92,10 +92,10 @@ In this example, you can see how we made a new class called "car", which then al
 <p>Type your answer in the text box and press "Check Answer"</p>
 
 <div id="answer-console">
-  <input type="text" id="user-answer" placeholder="Enter here..." />
-  <button onclick="checkAnswer()">Check Answer</button>
-  <p id="feedback"></p>
-  <canvas id="confetti-canvas"></canvas>
+  <input type="text" id="class-answer" placeholder="Enter here..." />
+  <button onclick="checkClassAnswer()">Check Answer</button>
+  <p id="class-feedback"></p>
+  <canvas id="class-confetti"></canvas>
 </div>
 
 <style>
@@ -108,7 +108,7 @@ In this example, you can see how we made a new class called "car", which then al
     border-radius: 8px;
     position: relative;
   }
-  #user-answer {
+  #class-answer {
     width: 60%;
     padding: 8px;
     font-size: 1em;
@@ -126,11 +126,11 @@ In this example, you can see how we made a new class called "car", which then al
     border-radius: 4px;
     cursor: pointer;
   }
-  #feedback {
+  #class-feedback {
     margin-top: 10px;
     font-weight: bold;
   }
-  #confetti-canvas {
+  #class-confetti {
     position: absolute;
     top: 0;
     left: 0;
@@ -142,9 +142,9 @@ In this example, you can see how we made a new class called "car", which then al
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
-  function checkAnswer() {
-    const input = document.getElementById("user-answer").value.trim();
-    const feedback = document.getElementById("feedback");
+  function checkClassAnswer() {
+    const input = document.getElementById("class-answer").value.trim();
+    const feedback = document.getElementById("class-feedback");
     const correctAnswer = "class House {}";
 
     if (input === correctAnswer) {
@@ -165,10 +165,10 @@ In this example, you can see how we made a new class called "car", which then al
 ### Challenge 2: Make a constructor for the house with the parameters cost, age, and size (add brackets, don't add this.)
 
 <div id="answer-console">
-  <input type="text" id="person-answer" placeholder="Type answer here..." />
+  <input type="text" id="constructor-answer" placeholder="Type answer here..." />
   <button onclick="checkAnswer()">Check Answer</button>
-  <p id="feedback"></p>
-  <canvas id="confetti-canvas"></canvas>
+  <p id="constructor-feedback"></p>
+  <canvas id="constructor-confetti"></canvas>
 </div>
 
 <style>
@@ -181,7 +181,7 @@ In this example, you can see how we made a new class called "car", which then al
     border-radius: 8px;
     position: relative;
   }
-  #person-answer {
+  #constructor-answer {
     width: 60%;
     padding: 8px;
     font-size: 1em;
@@ -199,11 +199,11 @@ In this example, you can see how we made a new class called "car", which then al
     border-radius: 4px;
     cursor: pointer;
   }
-  #feedback {
+  #constructor-feedback {
     margin-top: 10px;
     font-weight: bold;
   }
-  #confetti-canvas {
+  #constructor-confetti {
     position: absolute;
     top: 0;
     left: 0;
@@ -216,8 +216,8 @@ In this example, you can see how we made a new class called "car", which then al
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
   function checkAnswer() {
-    const input = document.getElementById("person-answer").value.trim();
-    const feedback = document.getElementById("feedback");
+    const input = document.getElementById("constructor-answer").value.trim();
+    const feedback = document.getElementById("constructor-feedback");
     const correctAnswer = "constructor(cost, age, size) {}";
 
     if (input === correctAnswer) {
@@ -238,10 +238,10 @@ In this example, you can see how we made a new class called "car", which then al
 ### Challenge 3: Make an instance of the House class with the name myHouse without parameters (don't forget the semicolon!)
 
 <div id="answer-console">
-  <input type="text" id="person-response" placeholder="Type answer here..." />
+  <input type="text" id="const-response" placeholder="Type answer here..." />
   <button onclick="checkAnswer()">Check Answer</button>
-  <p id="feedback"></p>
-  <canvas id="confetti-canvas"></canvas>
+  <p id="const-feedback"></p>
+  <canvas id="const-confetti"></canvas>
 </div>
 
 <style>
@@ -254,7 +254,7 @@ In this example, you can see how we made a new class called "car", which then al
     border-radius: 8px;
     position: relative;
   }
-  #person-response {
+  #const-response {
     width: 60%;
     padding: 8px;
     font-size: 1em;
@@ -272,11 +272,11 @@ In this example, you can see how we made a new class called "car", which then al
     border-radius: 4px;
     cursor: pointer;
   }
-  #feedback {
+  #const-feedback {
     margin-top: 10px;
     font-weight: bold;
   }
-  #confetti-canvas {
+  #const-confetti {
     position: absolute;
     top: 0;
     left: 0;
@@ -289,8 +289,8 @@ In this example, you can see how we made a new class called "car", which then al
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
   function checkAnswer() {
-    const input = document.getElementById("person-response").value.trim();
-    const feedback = document.getElementById("feedback");
+    const input = document.getElementById("const-response").value.trim();
+    const feedback = document.getElementById("const-feedback");
     const correctAnswer = "const myHouse = new House();";
 
     if (input === correctAnswer) {
